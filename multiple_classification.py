@@ -53,18 +53,26 @@ default_map = {
     'Yes': 1
 }
 
-if(selected == 'BMI'):
+if (selected == 'BMI'):
     st.title('BMI Classification')
     
-    person_gender = st.selectbox('person_gender', gender_map)
-    person_height = st.number_input('person_height', height_map)
-    person_weight = st.number_input('person_weight', weight_map)
-
-
+    # --- สร้าง 4 ช่องรับข้อมูล ---
+    # 1. Gender (เพศ)
+    person_gender = st.selectbox('Gender', list(gender_map.keys()))
     
+    # 2. Height (ส่วนสูง - แนะนำให้ใช้ number_input เพื่อความง่าย)
+    height = st.number_input('Height (cm)', min_value=0.0, format="%.2f")
+    
+    # 3. Weight (น้ำหนัก)
+    weight = st.number_input('Weight (kg)', min_value=0.0, format="%.2f")
+    
+    # 4. Index (ดัชนี หรือข้อมูลอื่นๆ ที่ model ต้องการ)
+    # หมายเหตุ: โดยปกติ BMI จะคำนวณจาก W/H^2 แต่ถ้า model ของคุณต้องการช่อง Index แยกต่างหาก:
+    index_val = st.number_input('Index Score', min_value=0)
+
     bmi_prediction = ''
-    
-if st.button('Predict BMI Status'):
+
+    if st.button('Predict BMI Status'):
         # จัดเตรียมข้อมูลส่งให้ model.predict
         # ตรวจสอบลำดับ features ให้ตรงกับที่ model เคยเรียนรู้มานะครับ
         input_data = [
@@ -83,7 +91,6 @@ if st.button('Predict BMI Status'):
         bmi_prediction = status_map.get(prediction[0], "Unknown Status")
             
         st.success(f'Result: {bmi_prediction}')
-
 
 if(selected == 'Loan'):
     st.title('Loan Classification')
@@ -208,6 +215,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
