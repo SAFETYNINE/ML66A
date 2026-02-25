@@ -70,7 +70,7 @@ if (selected == 'BMI'):
 
     bmi_prediction = ''
 
-    if st.button('Predict BMI Status'):
+    if st.button('Predict'):
         # จัดเตรียมข้อมูลส่งให้ model.predict
         # ตรวจสอบลำดับ features ให้ตรงกับที่ model เคยเรียนรู้มานะครับ
         input_data = [
@@ -212,6 +212,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
