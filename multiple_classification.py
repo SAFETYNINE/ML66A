@@ -62,7 +62,7 @@ if(selected == 'BMI'):
     person_index = st.selectbox('person_index', index_map)
 
     
-    loan_prediction = ''
+    bmi_prediction = ''
     
     if st.button('Predict'):
         bmi_prediction = bmi_model.predict([
@@ -217,6 +217,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
