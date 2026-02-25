@@ -57,8 +57,8 @@ if(selected == 'BMI'):
     st.title('BMI Classification')
     
     person_gender = st.selectbox('person_gender', gender_map)
-    person_height = st.selectbox('person_height', height_map)
-    person_weight = st.selectbox('person_weight', weight_map)
+    person_height = st.number_input('person_height', height_map)
+    person_weight = st.number_input('person_weight', weight_map)
 
 
     
@@ -207,6 +207,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
