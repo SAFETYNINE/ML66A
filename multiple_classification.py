@@ -66,9 +66,7 @@ if (selected == 'BMI'):
     # 3. Weight (น้ำหนัก)
     weight = st.number_input('Weight (kg)', min_value=0.0, format="%.2f")
     
-    # 4. Index (ดัชนี หรือข้อมูลอื่นๆ ที่ model ต้องการ)
-    # หมายเหตุ: โดยปกติ BMI จะคำนวณจาก W/H^2 แต่ถ้า model ของคุณต้องการช่อง Index แยกต่างหาก:
-    index_val = st.number_input('Index Score', min_value=0)
+
 
     bmi_prediction = ''
 
@@ -79,7 +77,6 @@ if (selected == 'BMI'):
             gender_map[person_gender], 
             height, 
             weight, 
-            index_val
         ]
         
         # เรียกใช้ model (ชื่อตัวแปรสมมติว่าเป็น bmi_model)
@@ -215,6 +212,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
