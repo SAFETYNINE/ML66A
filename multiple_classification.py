@@ -67,11 +67,9 @@ if(selected == 'BMI'):
     if st.button('Predict'):
         bmi_prediction = bmi_model.predict([
             [
-                input_data = [
                 gender_map[person_gender], 
                 height, 
-                weight, 
-                index_val
+                weight,
             ]
         ])
         
