@@ -64,24 +64,25 @@ if(selected == 'BMI'):
     
     bmi_prediction = ''
     
-    if st.button('Predict'):
-        bmi_prediction = bmi_model.predict([
-            [
-                gender_map[person_gender], 
-                height, 
-                weight,
-            ]
-        ])
+if st.button('Predict BMI Status'):
+        # จัดเตรียมข้อมูลส่งให้ model.predict
+        # ตรวจสอบลำดับ features ให้ตรงกับที่ model เคยเรียนรู้มานะครับ
+        input_data = [
+            gender_map[person_gender], 
+            height, 
+            weight, 
+            index_val
+        ]
         
-        if (bmi_prediction[0] == 0):
+        # เรียกใช้ model (ชื่อตัวแปรสมมติว่าเป็น bmi_model)
+        prediction = bmi_model.predict([input_data])
+        
+        # --- ส่วนการแสดงผล (ปรับเปลี่ยนตาม Logic ของ Model คุณ) ---
+        # ตัวอย่าง: 0 = Underweight, 1 = Normal, 2 = Overweight, 3 = Obese
+        status_map = {0: 'Underweight', 1: 'Normal', 2: 'Overweight', 3: 'Obese'}
+        bmi_prediction = status_map.get(prediction[0], "Unknown Status")
             
-          bmi_prediction = 'Not Accept'
-          
-        else:
-            
-          bmi_prediction = 'Accept'
-          
-    st.success(bmi_prediction)
+        st.success(f'Result: {bmi_prediction}')
 
 
 if(selected == 'Loan'):
@@ -207,6 +208,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
