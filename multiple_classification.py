@@ -59,7 +59,7 @@ if(selected == 'BMI'):
     person_gender = st.selectbox('person_gender', gender_map)
     person_height = st.selectbox('person_height', height_map)
     person_weight = st.selectbox('person_weight', weight_map)
-    person_index = st.selectbox('person_index', index_map)
+
 
     
     bmi_prediction = ''
@@ -67,19 +67,9 @@ if(selected == 'BMI'):
     if st.button('Predict'):
         bmi_prediction = bmi_model.predict([
             [
-                float(person_age),
-                gender_map[person_gender],
-                education_map[person_education],
-                float(person_income),
-                float(person_emp_exp),
-                home_map[person_home_ownership],
-                float(loan_amnt),
-                intent_map[loan_intent],
-                float(loan_int_rate),
-                float(loan_percent_income),
-                float(cb_person_cred_hist_length),
-                float(credit_score),
-                default_map[previous_loan_defaults_on_file]
+                gender_map[person_gender], 
+                height, 
+                weight,
             ]
         ])
         
@@ -217,6 +207,7 @@ if(selected == 'Riding'):
           
 
     st.success(Riding_prediction)
+
 
 
 
